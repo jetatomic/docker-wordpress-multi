@@ -9,7 +9,7 @@ RUN { \
   		echo 'upload_max_filesize=10M'; \
 #  		echo 'memory_limit=64M'; \
   		echo 'post_max_size=10M'; \
-      echo 'max_execution_time = 600'; \ # default 30
+      echo 'max_execution_time = 600'; \ 
 } > /usr/local/etc/php/conf.d/upload.ini
 
 ##############################################################################################

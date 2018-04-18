@@ -15,16 +15,16 @@ RUN { \
 ##############################################################################################
 # WORDPRESS Config
 ##############################################################################################
-ADD ./wordpress/wp-config.php /var/www/html/wp-config.php
+# ADD ./wordpress/wp-config.php /var/www/html/wp-config.php
 # chown wp-config.php to root
-RUN chown root:root /var/www/html/wp-config.php
+# RUN chown root:root /var/www/html/wp-config.php
 
 ##############################################################################################
 # WORDPRESS Plugins Setup
 ##############################################################################################
 RUN mkdir /plugins
 
-# Add All Plugin Files but
+# Add All Plugin Files
 ADD ./wordpress/plugins/ /plugins
 
 # Execute each on its own for better caching support
@@ -35,9 +35,9 @@ RUN /plugins.sh /plugins/security
 RUN rm /plugins.sh && rm /plugins -r
 
 # ADD OWN CUSTOM PLUGINS
-ADD ./plugins/my-plugin /var/www/html/wp-content/plugins/my-plugin
+ADD ./plugins/snapshot /var/www/html/wp-content/plugins/snapshot
 
 ##############################################################################################
 # WORDPRESS Themes Setup
 ##############################################################################################
-ADD ./themes/my-theme /var/www/html/wp-content/themes/my-theme
+# ADD ./themes/my-theme /var/www/html/wp-content/themes/my-theme

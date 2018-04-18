@@ -1,4 +1,4 @@
-FROM jetatomic/wp-base
+FROM jetatomic/wp-base:apache
 
 ##############################################################################################
 # PHP upload settings
@@ -24,8 +24,8 @@ RUN { \
 ##############################################################################################
 RUN mkdir /plugins
 
-# Add All Plugin Files
-ADD ./wordpress/plugins/ /plugins
+# Add Plugin Lists
+ADD /wordpress/plugins/ /plugins
 
 # Execute each on its own for better caching support
 RUN /plugins.sh /plugins/base
@@ -34,9 +34,9 @@ RUN /plugins.sh /plugins/security
 # Delete Plugins script and folder
 RUN rm /plugins.sh && rm /plugins -r
 
-# ADD OWN CUSTOM PLUGINS
-# ADD ./plugins/snapshot /var/www/html/wp-content/plugins/snapshot
-ADD ./plugins/snapshot /usr/src/wordpress/wp-content/plugins/snapshot
+# ADD Local Plugins
+# ADD /plugins/snapshot /var/www/html/wp-content/plugins/snapshot
+ADD /plugins/snapshot /usr/src/wordpress/wp-content/plugins/snapshot
 
 ##############################################################################################
 # WORDPRESS Themes Setup

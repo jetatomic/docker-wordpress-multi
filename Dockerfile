@@ -1,4 +1,4 @@
-FROM jetatomic/wp-base:apache
+FROM jetatomic/wp-base:latest
 
 ##############################################################################################
 # PHP upload settings

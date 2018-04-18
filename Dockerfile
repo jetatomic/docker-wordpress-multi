@@ -9,7 +9,7 @@ RUN { \
   		echo 'upload_max_filesize=10M'; \
 #  		echo 'memory_limit=64M'; \
   		echo 'post_max_size=10M'; \
-      echo 'max_execution_time = 600'; \ 
+      echo 'max_execution_time = 600'; \
 } > /usr/local/etc/php/conf.d/upload.ini
 
 ##############################################################################################
@@ -35,7 +35,8 @@ RUN /plugins.sh /plugins/security
 RUN rm /plugins.sh && rm /plugins -r
 
 # ADD OWN CUSTOM PLUGINS
-ADD ./plugins/snapshot /var/www/html/wp-content/plugins/snapshot
+# ADD ./plugins/snapshot /var/www/html/wp-content/plugins/snapshot
+ADD ./plugins/snapshot /usr/src/wordpress/wp-content/plugins/snapshot
 
 ##############################################################################################
 # WORDPRESS Themes Setup
